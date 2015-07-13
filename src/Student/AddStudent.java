@@ -5,7 +5,13 @@
  */
 package Student;
 
+import Other.DataBaseConnect;
+import java.awt.Image;
+import java.io.File;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -18,6 +24,7 @@ public class AddStudent extends javax.swing.JFrame {
      */
     public AddStudent() {
         initComponents();
+
     }
 
     /**
@@ -38,8 +45,8 @@ public class AddStudent extends javax.swing.JFrame {
         MStatusEn = new javax.swing.JComboBox();
         AddressEn = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        ImageLabel = new javax.swing.JLabel();
+        ChangeImage = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         StID = new javax.swing.JTextField();
@@ -143,15 +150,15 @@ public class AddStudent extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/1435845855_add_user.png"))); // NOI18N
-        jLabel10.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        ImageLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ImageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/1435845855_add_user.png"))); // NOI18N
+        ImageLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jButton2.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        jButton2.setText("تغير الصورة");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        ChangeImage.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        ChangeImage.setText("تغير الصورة");
+        ChangeImage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                ChangeImageActionPerformed(evt);
             }
         });
 
@@ -161,7 +168,6 @@ public class AddStudent extends javax.swing.JFrame {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel11.setText("رقم الطالب");
 
-        StID.setEditable(false);
         StID.setFont(new java.awt.Font("Arial", 2, 15)); // NOI18N
 
         jLabel12.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
@@ -317,6 +323,11 @@ public class AddStudent extends javax.swing.JFrame {
         CancelButton.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         CancelButton.setForeground(new java.awt.Color(129, 110, 111));
         CancelButton.setText("الغاء");
+        CancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -345,8 +356,8 @@ public class AddStudent extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ImageLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ChangeImage, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -363,9 +374,9 @@ public class AddStudent extends javax.swing.JFrame {
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(49, 49, 49)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)))
+                        .addComponent(ChangeImage)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -376,9 +387,33 @@ public class AddStudent extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void ChangeImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChangeImageActionPerformed
+        JFileChooser file = new JFileChooser();
+        file.setCurrentDirectory(new File(System.getProperty("user.home")));
+        //filter the files
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Images", "jpg", "gif", "png");
+        file.addChoosableFileFilter(filter);
+        int result = file.showSaveDialog(null);
+        //if the user click on save in Jfilechooser
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = file.getSelectedFile();
+            String path = selectedFile.getAbsolutePath();
+            ImageLabel.setIcon(ResizeImage(path));
+        } //if the user click on save in Jfilechooser
+        else if (result == JFileChooser.CANCEL_OPTION) {
+            JOptionPane.showMessageDialog(null, "لم يتم اختيار صورة");
+        }
+
+    }//GEN-LAST:event_ChangeImageActionPerformed
+    // Methode to resize imageIcon with the same size of a Jlabel
+
+    public ImageIcon ResizeImage(String ImagePath) {
+        ImageIcon MyImage = new ImageIcon(ImagePath);
+        Image img = MyImage.getImage();
+        Image newImg = img.getScaledInstance(ImageLabel.getWidth(), ImageLabel.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon image = new ImageIcon(newImg);
+        return image;
+    }
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -387,19 +422,54 @@ public class AddStudent extends javax.swing.JFrame {
     private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveButtonActionPerformed
         // code of the save button
         // this method used to check data not empty
-        checkData();
+        DataBaseConnect.ConnectDB();
+        if (checkData()) {
+            System.out.println("ok");
+        }
     }//GEN-LAST:event_SaveButtonActionPerformed
 
-    void checkData(){
+    private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
+        // code of CancelButton
+        int result = JOptionPane.showConfirmDialog(null, "هل انت متاكد من رغبتك الغاء العملية", "الغاء", JOptionPane.YES_NO_OPTION);
+        if (result == JOptionPane.YES_OPTION) {
+            this.dispose();
+        }
+    }//GEN-LAST:event_CancelButtonActionPerformed
+
+    boolean checkData() {
         // this method to check input Data if it valid and not empty
-        if (StID.getText().equals("")){
+        if (StID.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "يرجى توليد رقم الطالب");
-            
-        }else if (StNameAr.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "يرجى ادخال اسم الطالب");
-            
-        } 
+        } else if (StNameAr.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "يرجى ادخال اسم الطالب باللغة العربية");
+        } else if (DateOfBirth.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "يرجى ادخال تاريخ الميلاد");
+        } else if (NaID.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "يرجى ادخال رقم الهوية");
+        } else if (Mobile.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "يرجى ادخال رقم الجوال");
+        } else if (AddressAr.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "يرجى ادخال العنوان");
+        } else {
+            return true;
+        }
+        return false;
     }
+
+    // methd to insert into student table 
+    void InsertIntoStudentTable(String StID, String StNameAr, String StNameEn,
+            String MajorAr, String MajorEn, String AddressAr, String AddressEn,
+            String Mobile, String phone, String NatId, String Status, String DoB, String image) {
+        // insert
+        String InsertStatment = "INSERT INTO `SalamceDB`.`Students` "
+                + "(`StID`, `StNameAr`, `StNameEn`, `NaID`, `DoB`, `MajorAr`, `MajorEn`, `Mobile`,"
+                + " `phone`, `AddressAr`, `AddressEn`, `MStatus`, `image`) "
+                + "VALUES ('" + StID + "', '" + StNameAr + "', '" + StNameEn + "', '" + NatId + "',"
+                + " '" + DoB + "', '" + MajorAr + "', '" + MajorEn + "', '" + Mobile + "', '" + phone + "',"
+                + " '" + AddressAr + "', '" + AddressEn + "', '" + Status + "', '" + image + "')";
+
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -439,7 +509,9 @@ public class AddStudent extends javax.swing.JFrame {
     private javax.swing.JTextField AddressAr;
     private javax.swing.JTextField AddressEn;
     private javax.swing.JButton CancelButton;
+    private javax.swing.JButton ChangeImage;
     private javax.swing.JFormattedTextField DateOfBirth;
+    private javax.swing.JLabel ImageLabel;
     private javax.swing.JComboBox MStatusAr;
     private javax.swing.JComboBox MStatusEn;
     private javax.swing.JTextField MajorAr;
@@ -451,9 +523,7 @@ public class AddStudent extends javax.swing.JFrame {
     private javax.swing.JTextField StID;
     private javax.swing.JTextField StNameAr;
     private javax.swing.JTextField StNameEn;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
