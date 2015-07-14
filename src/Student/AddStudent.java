@@ -8,6 +8,14 @@ package Student;
 import Other.DataBaseConnect;
 import java.awt.Image;
 import java.io.File;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -18,6 +26,12 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author mtayeh
  */
 public class AddStudent extends javax.swing.JFrame {
+
+    // var to connect with databese 
+    Connection con = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;
+    String image_path; //  image_path to use in other method
 
     /**
      * Creates new form AddStudent
@@ -52,7 +66,7 @@ public class AddStudent extends javax.swing.JFrame {
         StID = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         StNameAr = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        GenerateID = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         MajorAr = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
@@ -175,12 +189,13 @@ public class AddStudent extends javax.swing.JFrame {
         jLabel12.setText("اسم الطالب");
 
         StNameAr.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        StNameAr.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
-        jButton3.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        jButton3.setText("توليد");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        GenerateID.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        GenerateID.setText("توليد");
+        GenerateID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                GenerateIDActionPerformed(evt);
             }
         });
 
@@ -189,6 +204,7 @@ public class AddStudent extends javax.swing.JFrame {
         jLabel13.setText("التخصص");
 
         MajorAr.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        MajorAr.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         jLabel14.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -221,6 +237,7 @@ public class AddStudent extends javax.swing.JFrame {
         jLabel18.setText("العنوان");
 
         AddressAr.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        AddressAr.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         jLabel19.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -238,7 +255,7 @@ public class AddStudent extends javax.swing.JFrame {
                     .addComponent(NaID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addComponent(jButton3)
+                            .addComponent(GenerateID)
                             .addGap(18, 18, 18)
                             .addComponent(StID))
                         .addComponent(StNameAr, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -274,7 +291,7 @@ public class AddStudent extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(StID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3))
+                    .addComponent(GenerateID))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
@@ -397,16 +414,17 @@ public class AddStudent extends javax.swing.JFrame {
         //if the user click on save in Jfilechooser
         if (result == JFileChooser.APPROVE_OPTION) {
             File selectedFile = file.getSelectedFile();
-            String path = selectedFile.getAbsolutePath();
-            ImageLabel.setIcon(ResizeImage(path));
+            image_path = selectedFile.getAbsolutePath();
+            ImageLabel.setIcon(ResizeImage(image_path));
+
         } //if the user click on save in Jfilechooser
         else if (result == JFileChooser.CANCEL_OPTION) {
             JOptionPane.showMessageDialog(null, "لم يتم اختيار صورة");
         }
 
     }//GEN-LAST:event_ChangeImageActionPerformed
-    // Methode to resize imageIcon with the same size of a Jlabel
 
+    // Methode to resize imageIcon with the same size of a Jlabel
     public ImageIcon ResizeImage(String ImagePath) {
         ImageIcon MyImage = new ImageIcon(ImagePath);
         Image img = MyImage.getImage();
@@ -415,16 +433,16 @@ public class AddStudent extends javax.swing.JFrame {
         return image;
     }
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void GenerateIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerateIDActionPerformed
+        // GenerateID code here:
+        // S month id 
+    }//GEN-LAST:event_GenerateIDActionPerformed
 
     private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveButtonActionPerformed
         // code of the save button
         // this method used to check data not empty
-        DataBaseConnect.ConnectDB();
         if (checkData()) {
-            System.out.println("ok");
+            InsertIntoStudentTable();
         }
     }//GEN-LAST:event_SaveButtonActionPerformed
 
@@ -457,17 +475,51 @@ public class AddStudent extends javax.swing.JFrame {
     }
 
     // methd to insert into student table 
-    void InsertIntoStudentTable(String StID, String StNameAr, String StNameEn,
-            String MajorAr, String MajorEn, String AddressAr, String AddressEn,
-            String Mobile, String phone, String NatId, String Status, String DoB, String image) {
-        // insert
-        String InsertStatment = "INSERT INTO `SalamceDB`.`Students` "
-                + "(`StID`, `StNameAr`, `StNameEn`, `NaID`, `DoB`, `MajorAr`, `MajorEn`, `Mobile`,"
-                + " `phone`, `AddressAr`, `AddressEn`, `MStatus`, `image`) "
-                + "VALUES ('" + StID + "', '" + StNameAr + "', '" + StNameEn + "', '" + NatId + "',"
-                + " '" + DoB + "', '" + MajorAr + "', '" + MajorEn + "', '" + Mobile + "', '" + phone + "',"
-                + " '" + AddressAr + "', '" + AddressEn + "', '" + Status + "', '" + image + "')";
+    void InsertIntoStudentTable() {
+        try {
+            // insert
+           /* String InsertStatment2 = "INSERT INTO `SalamceDB`.`Students` "
+             + "(`StID`, `StNameAr`, `StNameEn`, `NaID`, `DoB`, `MajorAr`, `MajorEn`, `Mobile`,"
+             + " `phone`, `AddressAr`, `AddressEn`, `MStatus`, `image`) "
+             + "VALUES ('" + StID + "', '" + StNameAr + "', '" + StNameEn + "', '" + NatId + "',"
+             + " '" + DoB + "', '" + MajorAr + "', '" + MajorEn + "', '" + Mobile + "', '" + phone + "',"
+             + " '" + AddressAr + "', '" + AddressEn + "', '" + Status + "', '" + image + "')";*/
+            String InsertStatment = "INSERT INTO `SalamceDB`.`Students` "
+                    + "(`StID`, `StNameAr`, `StNameEn`, `NaID`, `DoB`, `MajorAr`, `MajorEn`, `Mobile`,"
+                    + " `phone`, `AddressAr`, `AddressEn`, `MStatus`, `image`) "
+                    + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            con = DataBaseConnect.ConnectDB();
+            pst = con.prepareStatement(InsertStatment);
 
+            // convert date to databese date
+            String date = DateOfBirth.getText();//request.getParameter("date");
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy"); // your template here
+            java.util.Date dateStr = formatter.parse(date);
+            java.sql.Date dateDB = new java.sql.Date(dateStr.getTime());
+
+            // set value of insert statment
+            pst.setString(1, StID.getText());
+            pst.setString(2, StNameAr.getText());
+            pst.setString(3, StNameEn.getText());
+            pst.setString(4, NaID.getText());
+            pst.setDate(5, dateDB);
+            pst.setString(6, MajorAr.getText());
+            pst.setString(7, MajorEn.getText());
+            pst.setString(8, Mobile.getText());
+            pst.setString(9, Phone.getText());
+            pst.setString(10, AddressAr.getText());
+            pst.setString(11, AddressEn.getText());
+            pst.setString(12, (String) MStatusAr.getSelectedItem());
+            pst.setString(13, image_path);
+
+            // execute query
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Successfully updated", "Record", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+            Logger.getLogger(AddStudent.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(AddStudent.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -511,6 +563,7 @@ public class AddStudent extends javax.swing.JFrame {
     private javax.swing.JButton CancelButton;
     private javax.swing.JButton ChangeImage;
     private javax.swing.JFormattedTextField DateOfBirth;
+    private javax.swing.JButton GenerateID;
     private javax.swing.JLabel ImageLabel;
     private javax.swing.JComboBox MStatusAr;
     private javax.swing.JComboBox MStatusEn;
@@ -523,7 +576,6 @@ public class AddStudent extends javax.swing.JFrame {
     private javax.swing.JTextField StID;
     private javax.swing.JTextField StNameAr;
     private javax.swing.JTextField StNameEn;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
