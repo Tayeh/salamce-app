@@ -478,12 +478,6 @@ public class AddStudent extends javax.swing.JFrame {
     void InsertIntoStudentTable() {
         try {
             // insert
-           /* String InsertStatment2 = "INSERT INTO `SalamceDB`.`Students` "
-             + "(`StID`, `StNameAr`, `StNameEn`, `NaID`, `DoB`, `MajorAr`, `MajorEn`, `Mobile`,"
-             + " `phone`, `AddressAr`, `AddressEn`, `MStatus`, `image`) "
-             + "VALUES ('" + StID + "', '" + StNameAr + "', '" + StNameEn + "', '" + NatId + "',"
-             + " '" + DoB + "', '" + MajorAr + "', '" + MajorEn + "', '" + Mobile + "', '" + phone + "',"
-             + " '" + AddressAr + "', '" + AddressEn + "', '" + Status + "', '" + image + "')";*/
             String InsertStatment = "INSERT INTO `SalamceDB`.`Students` "
                     + "(`StID`, `StNameAr`, `StNameEn`, `NaID`, `DoB`, `MajorAr`, `MajorEn`, `Mobile`,"
                     + " `phone`, `AddressAr`, `AddressEn`, `MStatus`, `image`) "
