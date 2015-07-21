@@ -21,7 +21,6 @@ public class DataBaseConnect {
 
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/SalamceDB?useUnicode=true&characterEncoding=utf-8", "root", "root");
-            JOptionPane.showMessageDialog(null,"Ok");
             return con;
 
         } catch (ClassNotFoundException | SQLException e) {
