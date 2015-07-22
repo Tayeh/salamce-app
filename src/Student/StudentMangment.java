@@ -61,6 +61,7 @@ public class StudentMangment extends javax.swing.JFrame {
         STD_chage_group2 = new javax.swing.JButton();
         Delete4 = new javax.swing.JButton();
         Delete5 = new javax.swing.JButton();
+        Delete6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -207,11 +208,11 @@ public class StudentMangment extends javax.swing.JFrame {
                 .addGap(0, 12, Short.MAX_VALUE))
         );
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "العمليات", javax.swing.border.TitledBorder.RIGHT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "الطلبات", javax.swing.border.TitledBorder.RIGHT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
 
         STD_chage_group2.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
         STD_chage_group2.setForeground(new java.awt.Color(238, 14, 27));
-        STD_chage_group2.setText("تغيير المجموعة");
+        STD_chage_group2.setText("طلب تأجيل");
         STD_chage_group2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 STD_chage_group2ActionPerformed(evt);
@@ -220,7 +221,7 @@ public class StudentMangment extends javax.swing.JFrame {
 
         Delete4.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
         Delete4.setForeground(new java.awt.Color(238, 14, 27));
-        Delete4.setText("حذف");
+        Delete4.setText("شهادة قيد");
         Delete4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Delete4ActionPerformed(evt);
@@ -229,10 +230,19 @@ public class StudentMangment extends javax.swing.JFrame {
 
         Delete5.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
         Delete5.setForeground(new java.awt.Color(238, 14, 27));
-        Delete5.setText("تعديل البيانات");
+        Delete5.setText("طباعة شهادة");
         Delete5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Delete5ActionPerformed(evt);
+            }
+        });
+
+        Delete6.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        Delete6.setForeground(new java.awt.Color(238, 14, 27));
+        Delete6.setText("طلب انسحاب");
+        Delete6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Delete6ActionPerformed(evt);
             }
         });
 
@@ -241,12 +251,17 @@ public class StudentMangment extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Delete4, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(STD_chage_group2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Delete5, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(Delete4, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(STD_chage_group2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Delete5, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(278, 278, 278)
+                        .addComponent(Delete6, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -256,26 +271,26 @@ public class StudentMangment extends javax.swing.JFrame {
                     .addComponent(Delete4)
                     .addComponent(STD_chage_group2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Delete5))
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Delete6)
+                .addGap(0, 58, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addGap(45, 45, 45)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(79, Short.MAX_VALUE)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60))
             .addGroup(layout.createSequentialGroup()
-                .addGap(355, 355, 355)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -373,6 +388,10 @@ public class StudentMangment extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Delete5ActionPerformed
 
+    private void Delete6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Delete6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Delete6ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -414,6 +433,7 @@ public class StudentMangment extends javax.swing.JFrame {
     private javax.swing.JButton Delete1;
     private javax.swing.JButton Delete4;
     private javax.swing.JButton Delete5;
+    private javax.swing.JButton Delete6;
     private javax.swing.JButton STD_chage_group;
     private javax.swing.JButton STD_chage_group2;
     private javax.swing.JButton SearchWithName;
