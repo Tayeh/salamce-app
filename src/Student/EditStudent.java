@@ -29,6 +29,7 @@ public class EditStudent extends javax.swing.JFrame {
 
     // var to connect with databese 
     Connection con = null;
+    DataBaseConnect dbc ;
     ResultSet rs = null;
     PreparedStatement pst = null;
     String image_path; //  image_path to use in other method
@@ -453,8 +454,7 @@ public class EditStudent extends javax.swing.JFrame {
 
     private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveButtonActionPerformed
         // code of the save button
-        UpdateStudent();
-
+     UpdateStudent();
     }//GEN-LAST:event_SaveButtonActionPerformed
 
     private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
@@ -494,11 +494,12 @@ public class EditStudent extends javax.swing.JFrame {
         try {
             // update
             String UPDATEStatment = "UPDATE `SalamceDB`.`Students` "
-                    + "SET `StID` = '?', `StNameAr` = '?', `StNameEn` = '?', `NaID` = '?',"
-                    + " `DoB` = '?', `MajorAr` = '?', `MajorEn` = '?', `Mobile` = '?',"
-                    + " `phone` = '?', `AddressAr` = '?', `AddressEn` = '?', `MStatus` = '?',"
-                    + " `image` = '?' WHERE `Students`.`StID` = ? ";
-            con = DataBaseConnect.ConnectDB();
+                    + "SET `StNameAr` = ?, `StNameEn` = ?, `NaID` = ?,"
+                    + " `DoB` = ?, `MajorAr` = ?, `MajorEn` = ?, `Mobile` = ?,"
+                    + " `phone` = ?, `AddressAr` = ?, `AddressEn` = ?, `MStatus` = ?,"
+                    + " `image` = ? WHERE `StID` = ? ";
+            dbc = DataBaseConnect.db();
+            con = dbc.ConnectDB();
             pst = con.prepareStatement(UPDATEStatment);
 
             // convert date to databese date
@@ -508,20 +509,20 @@ public class EditStudent extends javax.swing.JFrame {
             java.sql.Date dateDB = new java.sql.Date(dateStr.getTime());
 
             // set value of insert statment
-            pst.setString(1, STID.getText());
-            pst.setString(2, StNameAr.getText());
-            pst.setString(3, StNameEn.getText());
-            pst.setString(4, NaID.getText());
-            pst.setDate(5, dateDB);
-            pst.setString(6, MajorAr.getText());
-            pst.setString(7, MajorEn.getText());
-            pst.setString(8, Mobile.getText());
-            pst.setString(9, Phone.getText());
-            pst.setString(10, AddressAr.getText());
-            pst.setString(11, AddressEn.getText());
-            pst.setString(12, (String) MStatusAr.getSelectedItem());
-            pst.setString(13, image_path);
-            pst.setString(14, STID.getText());
+          
+            pst.setString(1, StNameAr.getText());
+            pst.setString(2, StNameEn.getText());
+            pst.setString(3, NaID.getText());
+            pst.setDate(4, dateDB);
+            pst.setString(5, MajorAr.getText());
+            pst.setString(6, MajorEn.getText());
+            pst.setString(7, Mobile.getText());
+            pst.setString(8, Phone.getText());
+            pst.setString(9, AddressAr.getText());
+            pst.setString(10, AddressEn.getText());
+            pst.setString(11, (String) MStatusAr.getSelectedItem());
+            pst.setString(12, image_path);
+            pst.setString(13, STID.getText());
 
             // execute query
             pst.execute();

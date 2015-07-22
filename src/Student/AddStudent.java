@@ -29,6 +29,7 @@ public class AddStudent extends javax.swing.JFrame {
 
     // var to connect with databese 
     Connection con = null;
+    DataBaseConnect dbc ;
     ResultSet rs = null;
     PreparedStatement pst = null;
     String image_path; //  image_path to use in other method
@@ -492,7 +493,8 @@ public class AddStudent extends javax.swing.JFrame {
                     + "(`StID`, `StNameAr`, `StNameEn`, `NaID`, `DoB`, `MajorAr`, `MajorEn`, `Mobile`,"
                     + " `phone`, `AddressAr`, `AddressEn`, `MStatus`, `image`) "
                     + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
-            con = DataBaseConnect.ConnectDB();
+            dbc = DataBaseConnect.db();
+            con = dbc.ConnectDB();
             pst = con.prepareStatement(InsertStatment);
 
             // convert date to databese date
