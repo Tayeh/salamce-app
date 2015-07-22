@@ -453,6 +453,7 @@ public class EditStudent extends javax.swing.JFrame {
 
     private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveButtonActionPerformed
         // code of the save button
+        UpdateStudent();
 
     }//GEN-LAST:event_SaveButtonActionPerformed
 
@@ -502,12 +503,12 @@ public class EditStudent extends javax.swing.JFrame {
 
             // convert date to databese date
             String date = DateOfBirth.getText();//request.getParameter("date");
-            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy"); // your template here
+            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy"); // your template here
             java.util.Date dateStr = formatter.parse(date);
             java.sql.Date dateDB = new java.sql.Date(dateStr.getTime());
 
             // set value of insert statment
-            //pst.setString(1, StID.getText());
+            pst.setString(1, STID.getText());
             pst.setString(2, StNameAr.getText());
             pst.setString(3, StNameEn.getText());
             pst.setString(4, NaID.getText());
@@ -520,7 +521,7 @@ public class EditStudent extends javax.swing.JFrame {
             pst.setString(11, AddressEn.getText());
             pst.setString(12, (String) MStatusAr.getSelectedItem());
             pst.setString(13, image_path);
-            
+            pst.setString(14, STID.getText());
 
             // execute query
             pst.execute();
