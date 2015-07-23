@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -24,7 +25,7 @@ public class StudentMangment extends javax.swing.JFrame {
     Connection con = null;
     ResultSet rs = null;
     PreparedStatement pst = null;
-    int StID;
+    int StID=0;
     String STName;
 
     /**
@@ -56,7 +57,7 @@ public class StudentMangment extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         STD_chage_group = new javax.swing.JButton();
         Delete = new javax.swing.JButton();
-        Delete1 = new javax.swing.JButton();
+        edit = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         STD_chage_group2 = new javax.swing.JButton();
         Delete4 = new javax.swing.JButton();
@@ -176,12 +177,12 @@ public class StudentMangment extends javax.swing.JFrame {
             }
         });
 
-        Delete1.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        Delete1.setForeground(new java.awt.Color(238, 14, 27));
-        Delete1.setText("تعديل البيانات");
-        Delete1.addActionListener(new java.awt.event.ActionListener() {
+        edit.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        edit.setForeground(new java.awt.Color(238, 14, 27));
+        edit.setText("تعديل البيانات");
+        edit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Delete1ActionPerformed(evt);
+                editActionPerformed(evt);
             }
         });
 
@@ -195,7 +196,7 @@ public class StudentMangment extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(STD_chage_group, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Delete1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(edit, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -204,7 +205,7 @@ public class StudentMangment extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Delete)
                     .addComponent(STD_chage_group, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Delete1))
+                    .addComponent(edit))
                 .addGap(0, 12, Short.MAX_VALUE))
         );
 
@@ -251,18 +252,15 @@ public class StudentMangment extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(Delete4, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(STD_chage_group2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Delete5, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(278, 278, 278)
-                        .addComponent(Delete6, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(Delete4, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Delete6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(STD_chage_group2, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Delete5, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -271,9 +269,9 @@ public class StudentMangment extends javax.swing.JFrame {
                     .addComponent(Delete4)
                     .addComponent(STD_chage_group2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Delete5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(Delete6)
-                .addGap(0, 58, Short.MAX_VALUE))
+                .addGap(0, 46, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -365,12 +363,6 @@ public class StudentMangment extends javax.swing.JFrame {
         STName =  (String) jTable1.getValueAt(row, 1);
     }//GEN-LAST:event_jTable1MouseClicked
 
-    private void Delete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Delete1ActionPerformed
-        // TODO add your handling code here:
-        EditStudent ED = new EditStudent(StID);
-        ED.setVisible(true);
-    }//GEN-LAST:event_Delete1ActionPerformed
-
     private void STD_chage_groupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_STD_chage_groupActionPerformed
         // TODO add your handling code here:
         
@@ -391,6 +383,19 @@ public class StudentMangment extends javax.swing.JFrame {
     private void Delete6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Delete6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Delete6ActionPerformed
+
+    private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
+        // TODO add your handling code here:
+        if(StID != 0)
+        {
+             EditStudent ED = new EditStudent(StID);
+        ED.setVisible(true);
+        }
+       else
+        {
+             JOptionPane.showMessageDialog(null, "لم يتم اختيار طالب ");
+        }
+    }//GEN-LAST:event_editActionPerformed
 
     /**
      * @param args the command line arguments
@@ -430,7 +435,6 @@ public class StudentMangment extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Delete;
-    private javax.swing.JButton Delete1;
     private javax.swing.JButton Delete4;
     private javax.swing.JButton Delete5;
     private javax.swing.JButton Delete6;
@@ -440,6 +444,7 @@ public class StudentMangment extends javax.swing.JFrame {
     private javax.swing.JButton SearchWithNo;
     private javax.swing.JTextField StIDText;
     private javax.swing.JTextField StNameText;
+    private javax.swing.JButton edit;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JPanel jPanel3;

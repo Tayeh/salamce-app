@@ -29,6 +29,7 @@ public class AddTrainer extends javax.swing.JFrame {
 
     // var to connect with databese 
     Connection con = null;
+    DataBaseConnect dbc ;
     ResultSet rs = null;
     PreparedStatement pst = null;
     String image_path;
@@ -444,7 +445,8 @@ public class AddTrainer extends javax.swing.JFrame {
                     + "`Email`, `Qualification`, `Address`, `image`, `TrainerNameEn`, "
                     + "`QualificationEN`, `AddressEN`) "
                     + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            con = DataBaseConnect.ConnectDB();
+            dbc = DataBaseConnect.db();
+            con = dbc.ConnectDB();
             pst = con.prepareStatement(InsertStatment);
 
             // convert date to databese date
