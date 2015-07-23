@@ -53,14 +53,15 @@ public class StudentMangment extends javax.swing.JFrame {
         StIDText = new javax.swing.JTextField();
         SearchWithNo = new javax.swing.JButton();
         SearchWithName = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        Delete1 = new javax.swing.JButton();
-        Delete = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
         STD_chage_group = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        Delete2 = new javax.swing.JButton();
-        Delete3 = new javax.swing.JButton();
-        STD_chage_group1 = new javax.swing.JButton();
+        Delete = new javax.swing.JButton();
+        Delete1 = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        STD_chage_group2 = new javax.swing.JButton();
+        Delete4 = new javax.swing.JButton();
+        Delete5 = new javax.swing.JButton();
+        Delete6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -155,14 +156,14 @@ public class StudentMangment extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "العمليات", javax.swing.border.TitledBorder.RIGHT, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "العمليات", javax.swing.border.TitledBorder.RIGHT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
 
-        Delete1.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        Delete1.setForeground(new java.awt.Color(238, 14, 27));
-        Delete1.setText("تعديل البيانات");
-        Delete1.addActionListener(new java.awt.event.ActionListener() {
+        STD_chage_group.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        STD_chage_group.setForeground(new java.awt.Color(238, 14, 27));
+        STD_chage_group.setText("تغيير المجموعة");
+        STD_chage_group.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Delete1ActionPerformed(evt);
+                STD_chage_groupActionPerformed(evt);
             }
         });
 
@@ -175,102 +176,122 @@ public class StudentMangment extends javax.swing.JFrame {
             }
         });
 
-        STD_chage_group.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        STD_chage_group.setForeground(new java.awt.Color(238, 14, 27));
-        STD_chage_group.setText("تغيير المجموعة");
-        STD_chage_group.addActionListener(new java.awt.event.ActionListener() {
+        Delete1.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        Delete1.setForeground(new java.awt.Color(238, 14, 27));
+        Delete1.setText("تعديل البيانات");
+        Delete1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                STD_chage_groupActionPerformed(evt);
+                Delete1ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(STD_chage_group, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Delete1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(83, 83, 83))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(Delete1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(STD_chage_group, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Delete))
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Delete)
+                    .addComponent(STD_chage_group, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Delete1))
+                .addGap(0, 12, Short.MAX_VALUE))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "العمليات", javax.swing.border.TitledBorder.RIGHT, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "الطلبات", javax.swing.border.TitledBorder.RIGHT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
 
-        Delete2.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        Delete2.setForeground(new java.awt.Color(238, 14, 27));
-        Delete2.setText("تعديل البيانات");
-        Delete2.addActionListener(new java.awt.event.ActionListener() {
+        STD_chage_group2.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        STD_chage_group2.setForeground(new java.awt.Color(238, 14, 27));
+        STD_chage_group2.setText("طلب تأجيل");
+        STD_chage_group2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Delete2ActionPerformed(evt);
+                STD_chage_group2ActionPerformed(evt);
             }
         });
 
-        Delete3.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        Delete3.setForeground(new java.awt.Color(238, 14, 27));
-        Delete3.setText("حذف");
-        Delete3.addActionListener(new java.awt.event.ActionListener() {
+        Delete4.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        Delete4.setForeground(new java.awt.Color(238, 14, 27));
+        Delete4.setText("شهادة قيد");
+        Delete4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Delete3ActionPerformed(evt);
+                Delete4ActionPerformed(evt);
             }
         });
 
-        STD_chage_group1.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        STD_chage_group1.setForeground(new java.awt.Color(238, 14, 27));
-        STD_chage_group1.setText("تغيير المجموعة");
-        STD_chage_group1.addActionListener(new java.awt.event.ActionListener() {
+        Delete5.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        Delete5.setForeground(new java.awt.Color(238, 14, 27));
+        Delete5.setText("طباعة شهادة");
+        Delete5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                STD_chage_group1ActionPerformed(evt);
+                Delete5ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(Delete3, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(STD_chage_group1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+        Delete6.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        Delete6.setForeground(new java.awt.Color(238, 14, 27));
+        Delete6.setText("طلب انسحاب");
+        Delete6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Delete6ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(Delete4, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(STD_chage_group2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Delete5, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(278, 278, 278)
+                        .addComponent(Delete6, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Delete4)
+                    .addComponent(STD_chage_group2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Delete5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Delete2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(83, 83, 83))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(Delete2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(STD_chage_group1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Delete3))
+                .addComponent(Delete6)
+                .addGap(0, 58, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(79, Short.MAX_VALUE)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(79, Short.MAX_VALUE)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -280,11 +301,11 @@ public class StudentMangment extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 185, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -355,17 +376,21 @@ public class StudentMangment extends javax.swing.JFrame {
         
     }//GEN-LAST:event_STD_chage_groupActionPerformed
 
-    private void Delete2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Delete2ActionPerformed
+    private void STD_chage_group2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_STD_chage_group2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Delete2ActionPerformed
+    }//GEN-LAST:event_STD_chage_group2ActionPerformed
 
-    private void Delete3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Delete3ActionPerformed
+    private void Delete4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Delete4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Delete3ActionPerformed
+    }//GEN-LAST:event_Delete4ActionPerformed
 
-    private void STD_chage_group1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_STD_chage_group1ActionPerformed
+    private void Delete5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Delete5ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_STD_chage_group1ActionPerformed
+    }//GEN-LAST:event_Delete5ActionPerformed
+
+    private void Delete6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Delete6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Delete6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -406,18 +431,19 @@ public class StudentMangment extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Delete;
     private javax.swing.JButton Delete1;
-    private javax.swing.JButton Delete2;
-    private javax.swing.JButton Delete3;
+    private javax.swing.JButton Delete4;
+    private javax.swing.JButton Delete5;
+    private javax.swing.JButton Delete6;
     private javax.swing.JButton STD_chage_group;
-    private javax.swing.JButton STD_chage_group1;
+    private javax.swing.JButton STD_chage_group2;
     private javax.swing.JButton SearchWithName;
     private javax.swing.JButton SearchWithNo;
     private javax.swing.JTextField StIDText;
     private javax.swing.JTextField StNameText;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

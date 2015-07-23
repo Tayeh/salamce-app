@@ -6,7 +6,6 @@
 package Trainer;
 
 import Other.DataBaseConnect;
-import Student.AddStudent;
 import java.awt.Image;
 import java.io.File;
 import java.sql.Connection;
