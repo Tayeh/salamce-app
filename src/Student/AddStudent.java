@@ -29,7 +29,7 @@ public class AddStudent extends javax.swing.JFrame {
 
     // var to connect with databese 
     Connection con = null;
-    DataBaseConnect dbc ;
+    DataBaseConnect dbc;
     ResultSet rs = null;
     PreparedStatement pst = null;
     String image_path; //  image_path to use in other method
@@ -212,9 +212,9 @@ public class AddStudent extends javax.swing.JFrame {
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel14.setText("تاريخ الميلاد");
 
-        DateOfBirth.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
+        DateOfBirth.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd-MM-yyyy"))));
 
-        jLabel31.setText("(DD/MM/YYYY)");
+        jLabel31.setText("(DD-MM-YYYY)");
 
         jLabel15.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -386,7 +386,9 @@ public class AddStudent extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ImageLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ChangeImage, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -399,16 +401,16 @@ public class AddStudent extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(49, 49, 49)
                         .addComponent(ImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ChangeImage)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(ChangeImage)
+                        .addGap(32, 32, 32)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -491,15 +493,15 @@ public class AddStudent extends javax.swing.JFrame {
             // insert
             String InsertStatment = "INSERT INTO `SalamceDB`.`Students` "
                     + "(`StID`, `StNameAr`, `StNameEn`, `NaID`, `DoB`, `MajorAr`, `MajorEn`, `Mobile`,"
-                    + " `phone`, `AddressAr`, `AddressEn`, `MStatus`, `image`) "
-                    + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                    + " `phone`, `AddressAr`, `AddressEn`, `MStatus`, `image`, `MStatusEN`) "
+                    + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             dbc = DataBaseConnect.db();
             con = dbc.ConnectDB();
             pst = con.prepareStatement(InsertStatment);
 
             // convert date to databese date
             String date = DateOfBirth.getText();//request.getParameter("date");
-            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy"); // your template here
+            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy"); // your template here
             java.util.Date dateStr = formatter.parse(date);
             java.sql.Date dateDB = new java.sql.Date(dateStr.getTime());
 
@@ -517,6 +519,7 @@ public class AddStudent extends javax.swing.JFrame {
             pst.setString(11, AddressEn.getText());
             pst.setString(12, (String) MStatusAr.getSelectedItem());
             pst.setString(13, image_path);
+            pst.setString(14, (String) MStatusEn.getSelectedItem());
 
             // execute query
             pst.execute();

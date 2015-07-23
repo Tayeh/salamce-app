@@ -452,6 +452,10 @@ public class EditStudent extends javax.swing.JFrame {
         return image;
     }
 
+    void SetImage(String Path){
+        File selectedFile = new File(Path);
+        ImageLabel.setIcon(ResizeImage(selectedFile.getPath()));
+    }
     private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveButtonActionPerformed
         // code of the save button
      UpdateStudent();
@@ -482,8 +486,9 @@ public class EditStudent extends javax.swing.JFrame {
                 Phone.setText(rs.getString(9));
                 AddressAr.setText(rs.getString(10));
                 AddressEn.setText(rs.getString(11));
-                //MStatusAr.setText(rs.getString(5));
-                image_path = rs.getString(13);
+                MStatusAr.setSelectedItem(rs.getString(12));
+                SetImage(rs.getString(13));
+                MStatusEn.setSelectedItem(rs.getString(14));
             }
             
         } catch (SQLException ex) {
