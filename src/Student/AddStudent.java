@@ -12,8 +12,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -447,8 +449,45 @@ public class AddStudent extends javax.swing.JFrame {
     }
 
     private void GenerateIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerateIDActionPerformed
-        // GenerateID code here:
-        // S month id 
+        try {
+            // GenerateID code here:
+            // YYYY MM NNN
+            DateFormat dateFormat = new SimpleDateFormat("yyyyMM");
+            Date date = new Date();
+            String DtaePart = dateFormat.format(date);  // yyyy mm
+
+            String Sql = "SELECT `StID` FROM `Students` ORDER BY StID";
+            dbc = DataBaseConnect.db();
+            con = dbc.ConnectDB();
+            pst = con.prepareStatement(Sql);
+            rs = pst.executeQuery();
+            rs.last();
+
+            String LASTID = rs.getString("StID");
+            String IDPart = LASTID.substring(6, 9);
+            int ID = Integer.parseInt(IDPart);
+
+            DateFormat monthformat = new SimpleDateFormat("MM");
+            Date datemonth = new Date();
+            String month = monthformat.format(datemonth);
+            String IDMM = LASTID.substring(4, 6);
+
+            if (month.equals(IDMM)) {
+                if (ID < 001) {
+                    StID.setText("" + DtaePart + "001");
+                } else if (ID >= 001) {
+                    ID++;
+                    String newid = String.format("%03d", ID);
+                    StID.setText("" + DtaePart + "" + newid);
+                }
+            } else {
+                StID.setText("" + DtaePart + "001");
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(AddStudent.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_GenerateIDActionPerformed
 
     private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveButtonActionPerformed
