@@ -29,7 +29,7 @@ public class AddTrainer extends javax.swing.JFrame {
 
     // var to connect with databese 
     Connection con = null;
-    DataBaseConnect dbc ;
+    DataBaseConnect dbc;
     ResultSet rs = null;
     PreparedStatement pst = null;
     String image_path;
@@ -384,7 +384,8 @@ public class AddTrainer extends javax.swing.JFrame {
 
     private void GenerateIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerateIDActionPerformed
         // GenerateID code here:
-        // S month id
+
+
     }//GEN-LAST:event_GenerateIDActionPerformed
 
     private void ChangeImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChangeImageActionPerformed

@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Student;
+package Trainer;
 
+import Student.*;
 import Other.DataBaseConnect;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,7 +20,7 @@ import net.proteanit.sql.DbUtils;
  *
  * @author mtayeh
  */
-public class StudentMangment extends javax.swing.JFrame {
+public class TrainerMangment extends javax.swing.JFrame {
 
     // var to connect with databese 
     Connection con = null;
@@ -31,7 +32,7 @@ public class StudentMangment extends javax.swing.JFrame {
     /**
      * Creates new form SearchStudent
      */
-    public StudentMangment() {
+    public TrainerMangment() {
         initComponents();
 
     }
@@ -320,7 +321,7 @@ public class StudentMangment extends javax.swing.JFrame {
             rs = pst.executeQuery();
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (SQLException ex) {
-            Logger.getLogger(StudentMangment.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TrainerMangment.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_SearchWithNoActionPerformed
@@ -335,7 +336,7 @@ public class StudentMangment extends javax.swing.JFrame {
             rs = pst.executeQuery();
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (SQLException ex) {
-            Logger.getLogger(StudentMangment.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TrainerMangment.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_SearchWithNameActionPerformed
 
@@ -414,21 +415,23 @@ public class StudentMangment extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(StudentMangment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TrainerMangment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(StudentMangment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TrainerMangment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(StudentMangment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TrainerMangment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(StudentMangment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TrainerMangment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new StudentMangment().setVisible(true);
+                new TrainerMangment().setVisible(true);
             }
         });
     }
