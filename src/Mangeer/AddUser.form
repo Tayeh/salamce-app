@@ -174,10 +174,9 @@
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="2">
                 <StringItem index="0" value="&#x645;&#x62f;&#x631;&#x628;"/>
-                <StringItem index="1" value="&#x645;&#x624;&#x638;&#x641;"/>
+                <StringItem index="1" value="&#x645;&#x648;&#x638;&#x641;"/>
               </StringArray>
             </Property>
-            <Property name="selectedIndex" type="int" value="-1"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="usertypeActionPerformed"/>
@@ -353,6 +352,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="&#x62d;&#x641;&#x638; &#x648;&#x637;&#x628;&#x627;&#x639;&#x629;"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

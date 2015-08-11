@@ -82,8 +82,7 @@ public class AddUser extends javax.swing.JFrame {
         jLabel4.setText("كلمة المرور");
 
         usertype.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        usertype.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "مدرب", "مؤظف" }));
-        usertype.setSelectedIndex(-1);
+        usertype.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "مدرب", "موظف" }));
         usertype.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usertypeActionPerformed(evt);
@@ -223,6 +222,11 @@ public class AddUser extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
         jButton2.setForeground(new java.awt.Color(34, 146, 17));
         jButton2.setText("حفظ وطباعة");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -292,6 +296,10 @@ public class AddUser extends javax.swing.JFrame {
         int rand = new Random().nextInt(8*100000);
         Password.setText(Integer.toString(rand));
     }//GEN-LAST:event_NameActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
